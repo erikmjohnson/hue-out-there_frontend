@@ -9,7 +9,7 @@ export const remove = () => ({
   type:'TOKEN_REMOVE',
 });
 
-const API_URL = 'http://localhost:3000/';
+const API_URL = 'http://localhost:3001/';
 const SIGNUP_ROUTE = 'signup';
 const SIGNIN_ROUTE = 'signin';
 

@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import { styled } from '@material-ui/styles';
 
-
-const useStyles = makeStyles(theme => ({
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 200,
-  },
-}));
+const LoginButton = styled(Button)({
+  background: 'red',
+  background: '-webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet)',
+  background: '-o-linear-gradient(right, orange, yellow, green, cyan, blue, violet)',
+  background: '-moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet)',
+  background: 'linear-gradient(to right, orange , yellow, green, cyan, blue, violet)',
+  webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-size: 20vw;
+});
 
 export class AuthForm extends Component {
   constructor(props) {
@@ -43,7 +45,6 @@ export class AuthForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <Grid item>
               <TextField
-                className={useStyles.textField}
                 variant='filled'
                 name='username'
                 label='username'
@@ -54,7 +55,6 @@ export class AuthForm extends Component {
             </Grid>
             <Grid item>
               <TextField
-                className={useStyles.textField}
                 variant='filled'
                 name='password'
                 label='password'
@@ -63,8 +63,8 @@ export class AuthForm extends Component {
                 onChange={this.handleChange}
               />
             </Grid>
-            <Grid style={{marginTop: '20px'}} container={true} direction='column' justify='center' alignContent='center'>
-              <Button variant='contained' color='primary' type='submit'>{type}</Button>
+            <Grid style={{marginTop: '10%'}} container={true} direction='column' justify='center' alignContent='center'>
+              <LoginButton type='submit'>{type}</LoginButton>
             </Grid>
           </form>
         </Grid>

@@ -10,9 +10,9 @@ const LoginButton = styled(Button)({
   background: '-o-linear-gradient(right, orange, yellow, green, cyan, blue, violet)',
   background: '-moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet)',
   background: 'linear-gradient(to right, orange , yellow, green, cyan, blue, violet)',
-  webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-font-size: 20vw;
+//   webkit-background-clip: text,
+//  webkit-text-fill-color: transparent,
+  fontSize: '20%',
 });
 
 export class AuthForm extends Component {

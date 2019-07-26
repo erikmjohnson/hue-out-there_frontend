@@ -1,7 +1,7 @@
 import superagent from 'superagent';
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import './_LightInterface.scss';
-// import ToggleButton from 'react-toggle-button';
+import Switch from '@material-ui/core/Switch';
 
 const API_URL = 'http://localhost:3001/';
 const GROUP = `lightgroup/`;
@@ -11,8 +11,16 @@ const LIGHT = 'light/';
 export default class LightInterface extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      checkedA: true,
+      checkedB: true,
+    };
   }
+
+
+  handleChange = name => event => {
+    this.setState({ ...this.state, [name]: event.target.checked });
+  };
 
   allLights = (command) => {
     return superagent.get(`${API_URL}${GROUP}${command}`)
@@ -23,16 +31,6 @@ export default class LightInterface extends Component {
     return superagent.get(`${API_URL}${LIGHT}${id}/${command}`)
       .catch(err => console.log(err));
   };
-
-  // toggle1 = (id) =>
-  //           <ToggleButton
-  //               value={this.state.value || false}
-  //               onToggle={(value) => {
-  //                 this.setState({
-  //                   value: !value,
-  //                 })
-  //               }}
-  //           />
 
   render() {
     return (
@@ -60,6 +58,22 @@ export default class LightInterface extends Component {
           <li>
             <button onClick={this.light.bind(null, 7, 'on')}>Turn On Light 7</button>
             <button onClick={this.light.bind(null, 7, 'off')}>Turn Off Light 7</button>
+          </li>
+          <li>
+            <Switch
+                checked={this.state.checkedA}
+                onChange={this.handleChange('checkedA')}
+                value="checkedA"
+                inputProps={{ 'aria-label': 'secondary checkbox' }}
+            />
+          </li>
+          <li>
+            <Switch
+                checked={this.state.checkedB}
+                onChange={this.handleChange('checkedB')}
+                value="checkedB"
+                inputProps={{ 'aria-label': 'secondary checkbox'}}
+            />
           </li>
         </ul>
       </div>

@@ -5,14 +5,15 @@ import Grid from '@material-ui/core/Grid';
 import { styled } from '@material-ui/styles';
 
 const LoginButton = styled(Button)({
-  background: 'red',
-  background: '-webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet)',
-  background: '-o-linear-gradient(right, orange, yellow, green, cyan, blue, violet)',
-  background: '-moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet)',
-  background: 'linear-gradient(to right, orange , yellow, green, cyan, blue, violet)',
-//   webkit-background-clip: text,
-//  webkit-text-fill-color: transparent,
-  fontSize: '20%',
+  background: 'purple',
+  fontSize: '1.25em',
+  width: '65%',
+  variant: 'contained',
+  direction:'column',
+  justify:'center',
+  alignContent:'center',
+  marginTop: '10%',
+  color:'black',
 });
 
 export class AuthForm extends Component {
@@ -63,9 +64,9 @@ export class AuthForm extends Component {
                 onChange={this.handleChange}
               />
             </Grid>
-            <Grid style={{marginTop: '10%'}} container={true} direction='column' justify='center' alignContent='center'>
-              <LoginButton type='submit'>{type}</LoginButton>
-            </Grid>
+            <LoginButton type='submit'>
+              {type}
+            </LoginButton>
           </form>
         </Grid>
       </Grid>

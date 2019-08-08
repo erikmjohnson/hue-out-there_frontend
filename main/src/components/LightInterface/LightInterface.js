@@ -32,11 +32,22 @@ export default class LightInterface extends Component {
       .catch(err => console.log(err));
   };
 
+  test = () => {
+    return superagent.get(`${API_URL}status`)
+        .then((results) => {
+          console.log(results);
+        })
+        .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <div>
         <h1>Light Settings</h1>
         <ul>
+          <li>
+            <button onClick={this.test}>Butts</button>
+          </li>
           <li>
             <button onClick={this.allLights.bind(null, 'on')}>Turn On All Lights</button>
             <button onClick={this.allLights.bind(null, 'off')}>Turn Off All Lights</button>

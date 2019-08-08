@@ -23,13 +23,14 @@ export const allLights = (command) => store => {
 
 export const light = (id, command) => store => {
   return superagent.get(`${API_URL}${LIGHT}${id}/${command}`)
-      .then(() => {
-        return store.dispatch(
-            updateLight(
-                id,
-                true
-            )
-        )
+      .then((results) => {
+        // return store.dispatch(
+        //     updateLight(
+        //         id,
+        //         true
+        //     )
+        // )
+        console.log(results);
       })
       .catch(err => console.log(err));
 };

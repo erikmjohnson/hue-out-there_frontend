@@ -2,6 +2,8 @@ import superagent from 'superagent';
 import React, {Component, useState} from 'react';
 import './_LightInterface.scss';
 import Switch from '@material-ui/core/Switch';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 const API_URL = 'http://localhost:3001/';
 const GROUP = `lightgroup/`;

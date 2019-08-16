@@ -1,6 +1,7 @@
 import superagent from 'superagent';
 import React, {Component, useState} from 'react';
 import './_LightInterface.scss';
+import Incandescent from '@material-ui/icons/WbIncandescent';
 import Switch from '@material-ui/core/Switch';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
@@ -88,6 +89,14 @@ export default class LightInterface extends Component {
                 inputProps={{ 'aria-label': 'secondary checkbox'}}
             />
           </li>
+          <li>
+              <ToggleButton value="allOn">
+                <Incandescent />
+              </ToggleButton>
+              <ToggleButton value="allOff">
+                <Incandescent />
+              </ToggleButton>
+            </li>
         </ul>
       </div>
     )

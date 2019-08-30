@@ -1,6 +1,5 @@
 import superagent from 'superagent';
 
-
 export const updateLight = (lightId, status) => {
   return {
     type: 'UPDATE_LIGHT',

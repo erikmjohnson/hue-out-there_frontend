@@ -13,24 +13,16 @@ export const updateLight = (lightId, status) => {
 
 const API_URL = 'http://localhost:3001/';
 
-
-// export const allLights = (command) => store => {
-//   return superagent.get(`${API_URL}${GROUP}${command}`)
-//       .then()
-//       .catch(err => console.log(err));
-// };
-
-export const light = () => store => {
-  return superagent.get(`${API_URL}status`)
-    .then(results => {
-      return results.body.forEach(current =>
-        store.dispatch(
-          updateLight(
-            current.id,
-            current.status
-          )
-        )
-      )
-    })
-    .catch(err => console.log(err));
+export const light = (id, command) => store => {
+  return superagent.get(`${API_URL}${LIGHT}${id}/${command}`)
+      .then((results) => {
+        // return store.dispatch(
+        //     updateLight(
+        //         id,
+        //         true
+        //     )
+        // )
+        console.log(results);
+      })
+      .catch(err => console.log(err));
 };

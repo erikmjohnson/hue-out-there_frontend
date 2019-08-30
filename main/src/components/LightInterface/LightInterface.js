@@ -12,7 +12,6 @@ const API_URL = 'http://localhost:3001/';
 const GROUP = `lightgroup/`;
 const LIGHT = 'light/';
 
-
 export class LightInterface extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +20,6 @@ export class LightInterface extends Component {
       checkedB: true,
     };
   }
-
 
   handleChange = name => event => {
     this.setState({ ...this.state, [name]: event.target.checked });
@@ -91,13 +89,13 @@ export class LightInterface extends Component {
             />
           </li>
           <li>
-            <ToggleButton value="allOn">
-              <Incandescent />
-            </ToggleButton>
-            <ToggleButton value="allOff">
-              <Incandescent />
-            </ToggleButton>
-          </li>
+              <ToggleButton value="allOn">
+                <Incandescent />
+              </ToggleButton>
+              <ToggleButton value="allOff">
+                <Incandescent />
+              </ToggleButton>
+            </li>
         </ul>
       </div>
     )

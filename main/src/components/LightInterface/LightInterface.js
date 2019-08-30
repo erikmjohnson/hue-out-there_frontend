@@ -1,5 +1,5 @@
 import superagent from 'superagent';
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import './_LightInterface.scss';
 import * as lightAction from '../../action/light-action';
 import Incandescent from '@material-ui/icons/WbIncandescent';
@@ -11,7 +11,6 @@ const API_URL = 'http://localhost:3001/';
 const GROUP = `lightgroup/`;
 const LIGHT = 'light/';
 
-
 export class LightInterface extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +19,6 @@ export class LightInterface extends Component {
       checkedB: true,
     };
   }
-
 
   handleChange = name => event => {
     this.setState({ ...this.state, [name]: event.target.checked });

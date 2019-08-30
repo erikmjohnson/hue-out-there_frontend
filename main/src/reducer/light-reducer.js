@@ -1,8 +1,4 @@
-const initialState = [];
-
-export default (state = initialState, {type, payload}) => {
-
-  // const light = payload;
+export default (state = [], {type, payload}) => {
 
   switch(type) {
     case 'UPDATE_LIGHT':

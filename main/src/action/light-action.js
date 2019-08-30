@@ -1,9 +1,9 @@
 import superagent from 'superagent';
 
 
-export const updateLight = (lightId, status=false) => {
+export const updateLight = (lightId, status) => {
   return {
-    type: UPDATE_LIGHT,
+    type: 'UPDATE_LIGHT',
     payload: {
       lightId,
       status
@@ -11,30 +11,26 @@ export const updateLight = (lightId, status=false) => {
   }
 };
 
-const API_URL = 'http://localhost:3001';
-const GROUP = 'lightgroup/';
-const LIGHT = 'light/';
+const API_URL = 'http://localhost:3001/';
 
-export const allLights = (command) => store => {
-  return superagent.get(`${API_URL}${GROUP}${command}`)
-      .then()
-      .catch(err => console.log(err));
-};
 
-export const light = (id, command) => store => {
-  return superagent.get(`${API_URL}${LIGHT}${id}/${command}`)
-      .then(() => {
-        return store.dispatch(
-            updateLight(
-                id,
-                true
-            )
+// export const allLights = (command) => store => {
+//   return superagent.get(`${API_URL}${GROUP}${command}`)
+//       .then()
+//       .catch(err => console.log(err));
+// };
+
+export const light = () => store => {
+  return superagent.get(`${API_URL}status`)
+    .then(results => {
+      return results.body.forEach(current =>
+        store.dispatch(
+          updateLight(
+            current.id,
+            current.status
+          )
         )
-      })
-      .catch(err => console.log(err));
+      )
+    })
+    .catch(err => console.log(err));
 };
-
-// export const removeLight = () => {};
-//
-// createLight
-

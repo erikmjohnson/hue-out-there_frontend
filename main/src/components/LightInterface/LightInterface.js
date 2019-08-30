@@ -1,14 +1,19 @@
 import superagent from 'superagent';
 import React, {Component, useState} from 'react';
 import './_LightInterface.scss';
+import * as lightAction from '../../action/light-action';
+import Incandescent from '@material-ui/icons/WbIncandescent';
 import Switch from '@material-ui/core/Switch';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import {connect} from 'react-redux';
 
 const API_URL = 'http://localhost:3001/';
 const GROUP = `lightgroup/`;
 const LIGHT = 'light/';
 
 
-export default class LightInterface extends Component {
+export class LightInterface extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,11 +37,21 @@ export default class LightInterface extends Component {
       .catch(err => console.log(err));
   };
 
+  test = () => {
+    return this.props.mappedLights()
+      .then(() => {
+        console.log(this.props.lightState);
+      });
+  };
+
   render() {
     return (
       <div>
         <h1>Light Settings</h1>
         <ul>
+          <li>
+            <button onClick={this.test}>Light Status</button>
+          </li>
           <li>
             <button onClick={this.allLights.bind(null, 'on')}>Turn On All Lights</button>
             <button onClick={this.allLights.bind(null, 'off')}>Turn Off All Lights</button>
@@ -61,22 +76,46 @@ export default class LightInterface extends Component {
           </li>
           <li>
             <Switch
-                checked={this.state.checkedA}
-                onChange={this.handleChange('checkedA')}
-                value="checkedA"
-                inputProps={{ 'aria-label': 'secondary checkbox' }}
+              checked={this.state.checkedA}
+              onChange={this.handleChange('checkedA')}
+              value="checkedA"
+              inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
           </li>
           <li>
             <Switch
-                checked={this.state.checkedB}
-                onChange={this.handleChange('checkedB')}
-                value="checkedB"
-                inputProps={{ 'aria-label': 'secondary checkbox'}}
+              checked={this.state.checkedB}
+              onChange={this.handleChange('checkedB')}
+              value="checkedB"
+              inputProps={{ 'aria-label': 'secondary checkbox'}}
             />
+          </li>
+          <li>
+            <ToggleButton value="allOn">
+              <Incandescent />
+            </ToggleButton>
+            <ToggleButton value="allOff">
+              <Incandescent />
+            </ToggleButton>
           </li>
         </ul>
       </div>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    lightState: state.light
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    mappedLights: () => {
+      dispatch(lightAction.light());
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LightInterface)

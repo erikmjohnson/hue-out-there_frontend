@@ -3,13 +3,25 @@ import React, {Component} from 'react';
 import './_LightInterface.scss';
 import * as lightAction from '../../action/light-action';
 import Incandescent from '@material-ui/icons/WbIncandescent';
+import IncandescentOutlined from '@material-ui/icons/WbIncandescentOutlined';
 import Switch from '@material-ui/core/Switch';
 import ToggleButton from '@material-ui/lab/ToggleButton';
+import {styled} from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import {red} from '@material-ui/core/colors';
 import {connect} from 'react-redux';
 
 const API_URL = 'http://localhost:3001/';
 const GROUP = `lightgroup/`;
 const LIGHT = 'light/';
+
+const LightButton = styled(Button)({
+  background: 'purple',
+  color: 'blue',
+  border: 'none',
+  margin: 5,
+  borderRadius: 10,
+});
 
 export class LightInterface extends Component {
   constructor(props) {
@@ -50,50 +62,40 @@ export class LightInterface extends Component {
             <button onClick={this.test}>Light Status</button>
           </li>
           <li>
-            <button onClick={this.allLights.bind(null, 'on')}>Turn On All Lights</button>
-            <button onClick={this.allLights.bind(null, 'off')}>Turn Off All Lights</button>
+              <LightButton>
+                <ToggleButton value="allLights">
+                  <IncandescentOutlined  />
+                  All Lights
+                </ToggleButton>
+              </LightButton>
           </li>
           <li>
+              <LightButton>
+                <ToggleButton value="1">
+                  <IncandescentOutlined />
+                  1
+                </ToggleButton>
+              </LightButton>
+              <LightButton>
+                <ToggleButton value="2">
+                  <IncandescentOutlined />
+                  2
+                </ToggleButton>
+              </LightButton>
           </li>
           <li>
-            <button onClick={this.light.bind(null, 1, 'on')}>Turn On Light 1</button>
-            <button onClick={this.light.bind(null, 1, 'off')}>Turn Off Light 1</button>
-          </li>
-          <li>
-            <button onClick={this.light.bind(null, 2, 'on')}>Turn On Light 2</button>
-            <button onClick={this.light.bind(null, 2, 'off')}>Turn Off Light 2</button>
-          </li>
-          <li>
-            <button onClick={this.light.bind(null, 6, 'on')}>Turn On Light 6</button>
-            <button onClick={this.light.bind(null, 6, 'off')}>Turn Off Light 6</button>
-          </li>
-          <li>
-            <button onClick={this.light.bind(null, 7, 'on')}>Turn On Light 7</button>
-            <button onClick={this.light.bind(null, 7, 'off')}>Turn Off Light 7</button>
-          </li>
-          <li>
-            <Switch
-              checked={this.state.checkedA}
-              onChange={this.handleChange('checkedA')}
-              value="checkedA"
-              inputProps={{ 'aria-label': 'secondary checkbox' }}
-            />
-          </li>
-          <li>
-            <Switch
-              checked={this.state.checkedB}
-              onChange={this.handleChange('checkedB')}
-              value="checkedB"
-              inputProps={{ 'aria-label': 'secondary checkbox'}}
-            />
-          </li>
-          <li>
-            <ToggleButton value="allOn">
-              <Incandescent />
-            </ToggleButton>
-            <ToggleButton value="allOff">
-              <Incandescent />
-            </ToggleButton>
+            <LightButton>
+              <ToggleButton value="6">
+                <IncandescentOutlined />
+                6
+              </ToggleButton>
+            </LightButton>
+            <LightButton>
+              <ToggleButton value="7">
+                <IncandescentOutlined />
+                7
+              </ToggleButton>
+            </LightButton>
           </li>
         </ul>
       </div>

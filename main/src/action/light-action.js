@@ -13,7 +13,6 @@ export const updateLight = (lightId, status) => {
 
 const API_URL = 'http://localhost:3001/';
 
-
 // export const allLights = (command) => store => {
 //   return superagent.get(`${API_URL}${GROUP}${command}`)
 //       .then()

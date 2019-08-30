@@ -5,7 +5,6 @@ import * as lightAction from '../../action/light-action';
 import Incandescent from '@material-ui/icons/WbIncandescent';
 import Switch from '@material-ui/core/Switch';
 import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import {connect} from 'react-redux';
 
 const API_URL = 'http://localhost:3001/';

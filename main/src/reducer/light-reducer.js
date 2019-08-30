@@ -1,15 +1,13 @@
-// const initialState = null;
-//
-// export default (state = initialState, {type, payload}) => {
-//
-//     const light = payload;
-//
-//     switch(type) {
-//         case 'TOKEN_SET':
-//             return token;
-//         case 'TOKEN_REMOVE':
-//             return null;
-//         default:
-//             return state;
-//     }
-// };
+const initialState = [];
+
+export default (state = initialState, {type, payload}) => {
+
+  const light = payload;
+
+  switch(type) {
+    case 'UPDATE_LIGHT':
+      return [...state, payload];
+    default:
+      return state;
+  }
+};

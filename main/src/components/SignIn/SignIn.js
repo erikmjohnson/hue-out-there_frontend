@@ -17,13 +17,13 @@ class SignIn extends Component {
     return(
       <Grid container direction='row' justify='space-evenly' alignItems='center' spacing={0}>
         <div>
-          <Card item style={{width: '240px', margin: 'auto'}}>
+          <Card style={{width: '240px', margin: 'auto'}}>
             <CardContent>
               <Grid container direction='column' justify='space-evenly' alignItems='center' alignContent='center' spacing={0} >
-                <Grid item>
+                <Grid>
                   <h2>Login</h2>
                 </Grid>
-                <Grid item>
+                <Grid>
                   <AuthForm type='signin' onComplete={this.handleSignIn}/>
                 </Grid>
                 <Grid style={{marginTop: '10px'}}>

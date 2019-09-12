@@ -20,10 +20,10 @@ class SignUp extends Component {
           <Card style={{ width: '240px', margin: 'auto' }}>
             <CardContent>
               <Grid container direction='column' justify='space-evenly' alignItems='center' spacing={ 0 } >
-                <Grid item >
+                <Grid>
                   <h2>Sign Up</h2>
                 </Grid>
-                <Grid item>
+                <Grid>
                   <AuthForm type='signup' onComplete={ this.handleSignUp }/>
                 </Grid>
                 <Grid style={{ marginTop: '10px' }}>

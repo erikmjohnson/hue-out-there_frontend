@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import LightInterface from './components/LightInterface/LightInterface';
 import AuthRedirect from './components/AuthRedirect/AuthRedirect';
 import Landing from './components/Landing/Landing';

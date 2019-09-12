@@ -1,21 +1,16 @@
 import superagent from 'superagent';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './_LightInterface.scss';
-import * as lightAction from '../../action/light-action';
-import Incandescent from '@material-ui/icons/WbIncandescent';
 import IncandescentOutlined from '@material-ui/icons/WbIncandescentOutlined';
-import Switch from '@material-ui/core/Switch';
 import ToggleButton from '@material-ui/lab/ToggleButton';
-import {styled} from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import {red} from '@material-ui/core/colors';
-import {connect} from 'react-redux';
+import { styled } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 
 const API_URL = 'http://localhost:3001/';
-const GROUP = `lightgroup/`;
+// const GROUP = `lightgroup/`;
 const LIGHT = 'light/';
 
-const LightButton = styled(Button)({
+const LightButton = styled(ToggleButton)({
   background: 'purple',
   color: 'blue',
   border: 'none',
@@ -24,33 +19,14 @@ const LightButton = styled(Button)({
 });
 
 export class LightInterface extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checkedA: true,
-      checkedB: true,
-    };
-  }
-
-  handleChange = name => event => {
-    this.setState({ ...this.state, [name]: event.target.checked });
-  };
-
-  allLights = (command) => {
-    return superagent.get(`${API_URL}${GROUP}${command}`)
-      .catch(err => console.log(err));
-  };
 
   light = (id, command) => {
     return superagent.get(`${API_URL}${LIGHT}${id}/${command}`)
       .catch(err => console.log(err));
   };
 
-  test = () => {
-    return this.props.mappedLights()
-      .then(() => {
-        console.log(this.props.lightState);
-      });
+  test2 = () =>{
+    console.log(this.props.lightState);
   };
 
   render() {
@@ -59,43 +35,33 @@ export class LightInterface extends Component {
         <h1>Light Settings</h1>
         <ul>
           <li>
-            <button onClick={this.test}>Light Status</button>
+            <button onClick={this.test2}>Light Store</button>
           </li>
           <li>
-              <LightButton>
-                <ToggleButton value="allLights">
+                <LightButton value="allLights">
                   <IncandescentOutlined  />
                   All Lights
-                </ToggleButton>
-              </LightButton>
+                </LightButton>
           </li>
           <li>
-              <LightButton>
-                <ToggleButton value="1">
+                <LightButton value="1">
                   <IncandescentOutlined />
                   1
-                </ToggleButton>
-              </LightButton>
-              <LightButton>
-                <ToggleButton value="2">
+                </LightButton>
+                <LightButton value="2">
                   <IncandescentOutlined />
                   2
-                </ToggleButton>
-              </LightButton>
+                </LightButton>
           </li>
           <li>
-            <LightButton>
-              <ToggleButton value="6">
+              <LightButton value="6">
                 <IncandescentOutlined />
                 6
-              </ToggleButton>
-            </LightButton>
-            <LightButton>
-              <ToggleButton value="7">
+              </LightButton>
+              <LightButton value="7">
                 <IncandescentOutlined />
                 7
-              </ToggleButton>
-            </LightButton>
+              </LightButton>
           </li>
         </ul>
       </div>
@@ -109,12 +75,4 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    mappedLights: () => {
-      dispatch(lightAction.light());
-    }
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LightInterface)
+export default connect(mapStateToProps)(LightInterface)

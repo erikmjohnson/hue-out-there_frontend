@@ -1,8 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import { styled } from '@material-ui/styles';
+import * as lightAction from "../../action/light-action";
+import { connect } from "react-redux";
 
 const LoginButton = styled(Button)({
   background: 'purple',
@@ -16,35 +18,30 @@ const LoginButton = styled(Button)({
   color:'black',
 });
 
-export class AuthForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-    }
-  }
+class AuthForm extends Component {
+  state = { username: '', password: '' };
 
   handleChange = event => {
-    const {name, value} = event.target;
-    this.setState({[name] : value});
+    const { name, value } = event.target;
+    this.setState({ [name] : value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
     this.props.onComplete(this.state);
     this.setState({username: '', password: ''});
+    this.props.mappedLights();
   };
 
   render() {
-    let {type} = this.props;
+    let { type } = this.props;
     type = type === 'signin' ? 'signin' : 'signup';
 
     return(
-      <Grid container={true} direction='column' justify='center' alignItems='center'>
-        <Grid item>
+      <Grid container direction='column' justify='center' alignItems='center'>
+        <Grid>
           <form onSubmit={this.handleSubmit}>
-            <Grid item>
+            <Grid>
               <TextField
                 variant='filled'
                 name='username'
@@ -54,7 +51,7 @@ export class AuthForm extends Component {
                 onChange={this.handleChange}
               />
             </Grid>
-            <Grid item>
+            <Grid>
               <TextField
                 variant='filled'
                 name='password'
@@ -64,12 +61,20 @@ export class AuthForm extends Component {
                 onChange={this.handleChange}
               />
             </Grid>
-            <LoginButton type='submit'>
-              {type}
-            </LoginButton>
+            <LoginButton type='submit'>{ type }</LoginButton>
           </form>
         </Grid>
       </Grid>
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    mappedLights: () => {
+      dispatch(lightAction.light());
+    }
+  }
+};
+
+export default connect(null, mapDispatchToProps)(AuthForm)

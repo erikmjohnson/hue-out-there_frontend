@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as authActions from '../../action/auth-actions';
 import { Link } from 'react-router-dom';
-import { AuthForm } from '../AuthForm/AuthForm';
+import AuthForm from '../AuthForm/AuthForm';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import CardContent from "@material-ui/core/CardContent";
@@ -15,11 +15,11 @@ class SignUp extends Component {
 
   render() {
     return(
-      <Grid container={ true } direction='column' justify='center' alignItems='center' spacing={ 0 } >
+      <Grid container direction='column' justify='center' alignItems='center' spacing={ 0 } >
         <div>
           <Card style={{ width: '240px', margin: 'auto' }}>
             <CardContent>
-              <Grid container={ true } direction='column' justify='space-evenly' alignItems='center' spacing={ 0 } >
+              <Grid container direction='column' justify='space-evenly' alignItems='center' spacing={ 0 } >
                 <Grid item >
                   <h2>Sign Up</h2>
                 </Grid>

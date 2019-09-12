@@ -2,23 +2,14 @@ import superagent from 'superagent';
 import React, { Component } from 'react';
 import './_LightInterface.scss';
 import IncandescentOutlined from '@material-ui/icons/WbIncandescentOutlined';
-import ToggleButton from '@material-ui/lab/ToggleButton';
-import { styled } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
+import LightButtonMatUI from '../LightButton/LightButtonMatUI';
 
 const API_URL = 'http://localhost:3001/';
 // const GROUP = `lightgroup/`;
 const LIGHT = 'light/';
 
-const LightButton = styled(ToggleButton)({
-  background: 'purple',
-  color: 'blue',
-  border: 'none',
-  margin: 5,
-  borderRadius: 10,
-});
-
-export class LightInterface extends Component {
+class LightInterface extends Component {
 
   light = (id, command) => {
     return superagent.get(`${API_URL}${LIGHT}${id}/${command}`)
@@ -38,30 +29,30 @@ export class LightInterface extends Component {
             <button onClick={this.test2}>Light Store</button>
           </li>
           <li>
-                <LightButton value="allLights">
-                  <IncandescentOutlined  />
-                  All Lights
-                </LightButton>
+            <LightButtonMatUI value="allLights">
+              <IncandescentOutlined />
+              All Lights
+            </LightButtonMatUI>
           </li>
           <li>
-                <LightButton value="1">
-                  <IncandescentOutlined />
-                  1
-                </LightButton>
-                <LightButton value="2">
-                  <IncandescentOutlined />
-                  2
-                </LightButton>
+            <LightButtonMatUI value="1">
+              <IncandescentOutlined />
+              1
+            </LightButtonMatUI>
+            <LightButtonMatUI value="2">
+              <IncandescentOutlined />
+              2
+            </LightButtonMatUI>
           </li>
           <li>
-              <LightButton value="6">
-                <IncandescentOutlined />
-                6
-              </LightButton>
-              <LightButton value="7">
-                <IncandescentOutlined />
-                7
-              </LightButton>
+            <LightButtonMatUI value="6">
+              <IncandescentOutlined />
+              6
+            </LightButtonMatUI>
+            <LightButtonMatUI value="7">
+              <IncandescentOutlined />
+              7
+            </LightButtonMatUI>
           </li>
         </ul>
       </div>

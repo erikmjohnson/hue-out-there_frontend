@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Redirect} from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from "react-router-dom";
 
 class AuthRedirect extends Component {
   render() {
-    const {location, token} = this.props;
-    const {pathname} = location;
+    const { location, token } = this.props;
+    const { pathname } = location;
     let destinationRoute = null;
     if(pathname === '/signup' || pathname === '/') {
       if (token) {

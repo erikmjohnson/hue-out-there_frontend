@@ -1,4 +1,4 @@
-export default (state = null, {type, payload}) => {
+export default (state = null, { type, payload }) => {
 
   switch(type) {
     case 'TOKEN_SET':

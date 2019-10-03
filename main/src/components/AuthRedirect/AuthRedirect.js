@@ -21,8 +21,8 @@ class AuthRedirect extends Component {
       );
   }
 }
-const mapStateToProps = state => ({
-  token: state.token,
-});
+const mapStateToProps = state => {
+  return { token: state.token };
+};
 
 export default connect(mapStateToProps)(AuthRedirect);

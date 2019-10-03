@@ -1,5 +1,4 @@
-import React from 'react';
-import {styled} from "@material-ui/core";
+import { styled } from "@material-ui/core";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 
 const LightButtonMatUI = styled(ToggleButton)({

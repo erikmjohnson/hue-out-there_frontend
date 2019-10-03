@@ -1,9 +1,9 @@
 import superagent from 'superagent';
 import React, { Component } from 'react';
 import './_LightInterface.scss';
-import IncandescentOutlined from '@material-ui/icons/WbIncandescentOutlined';
 import { connect } from 'react-redux';
-import LightButtonMatUI from '../LightButton/LightButtonMatUI';
+import LightButtonOn from '../LightButton/LightButtonOn';
+import LightButtonOff from '../LightButton/LightButtonOff';
 
 const API_URL = 'http://localhost:3001/';
 // const GROUP = `lightgroup/`;
@@ -14,6 +14,15 @@ class LightInterface extends Component {
   light = (id, command) => {
     return superagent.get(`${API_URL}${LIGHT}${id}/${command}`)
       .catch(err => console.log(err));
+  };
+
+  renderLightButton = lightName => {
+    if (this.props.lightState.status) {
+      return <LightButtonOn lightName={ lightName }/>;
+    }
+    if (!this.props.lightState.status) {
+      return <LightButtonOff lightName={ lightName }/>;
+    }
   };
 
   test2 = () =>{
@@ -29,30 +38,19 @@ class LightInterface extends Component {
             <button onClick={this.test2}>Light Store</button>
           </li>
           <li>
-            <LightButtonMatUI value="allLights">
-              <IncandescentOutlined />
-              All Lights
-            </LightButtonMatUI>
+            {this.renderLightButton('All Lights')}
           </li>
           <li>
-            <LightButtonMatUI value="1">
-              <IncandescentOutlined />
-              1
-            </LightButtonMatUI>
-            <LightButtonMatUI value="2">
-              <IncandescentOutlined />
-              2
-            </LightButtonMatUI>
+            <div>
+              {this.renderLightButton('1')}
+              {this.renderLightButton('2')}
+            </div>
           </li>
           <li>
-            <LightButtonMatUI value="6">
-              <IncandescentOutlined />
-              6
-            </LightButtonMatUI>
-            <LightButtonMatUI value="7">
-              <IncandescentOutlined />
-              7
-            </LightButtonMatUI>
+            <div>
+              {this.renderLightButton('6')}
+              {this.renderLightButton('7')}
+            </div>
           </li>
         </ul>
       </div>

@@ -61,9 +61,7 @@ class LightInterface extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    lightState: state.light
-  }
+  return { lightState: state.light }
 };
 
 export default connect(mapStateToProps)(LightInterface)

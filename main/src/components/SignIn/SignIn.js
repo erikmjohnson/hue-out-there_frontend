@@ -9,7 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 
 class SignIn extends Component {
 
-  handleSignIn = (user) => {
+  handleSignIn = user => {
     return this.props.mappedSignIn(user.username, user.password);
   };
 
